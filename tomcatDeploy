@@ -4,5 +4,5 @@ git "https://github.com/repoAPS2/WS_apiAdr.git"
 //git "https://github.com/repoAPS2/" + repo + ".git"
 //git "https://github.com/" + account + "/" + repo + ".git"
 def mvnHome = tool 'Maven_3.5.0'
-stage(Build & Deploy) {sh "'${mvnHome}/bin/mvn' clean package tomcat7:deploy"}
+stage('Build & Deploy') {sh "'${mvnHome}/bin/mvn' clean package tomcat7:deploy"}
 }
