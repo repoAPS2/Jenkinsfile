@@ -1,0 +1,9 @@
+node {
+// https://897eb3e89fb11efad6514c58e0f43732aa549c1a@github.com/YuriiChukhrai/UnitTestsTeam_B.git
+git "https://" + token + "github.com/YuriiChukhrai/" + repo + ".git"
+def mvnHome = tool 'Maven_3.5.0'
+// sh "'${mvnHome}/bin/mvn' clean site -Dgroups=all"
+sh "'${mvnHome}/bin/mvn' clean site -Dgroups=" + group
+stage('Test') 		   {step([$class: 'Publisher', testResults: '**/testng-results.xml'])}
+//stage('Code Coverage') {step([$class: 'JacocoPublisher', execPattern:'**/**.exec', classPattern: '**/classes', sourcePattern: '**/src/main/java'])}
+	}
